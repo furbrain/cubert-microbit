@@ -27,7 +27,7 @@ enum NeoPixelColors {
 /**
  * Functions to operate Cubert.
  */
-//% weight=5 color=#2699BF icon="\uf110"
+//% weight=5 color=#2699BF icon="\uf00a"
 namespace cubert {
     /**
      * A NeoPixel strip
@@ -137,9 +137,9 @@ namespace cubert {
          * @param z distance of the LED from the front edge
          * @param rgb RGB color of the LED
          */
-        //% blockId="cubert_set_pixel_xyz_color" block="%strip|set pixel color at %x|%y|%z| to %rgb=cubert_colors" 
+        //% blockId="cubert_set_pixel_xyz_color" block="%strip|set pixel color at x %x|y %y|z %z| to %rgb=cubert_colors" 
         //% weight=85
-        //% parts="neopixel" advanced=true
+        //% parts="neopixel"
         setPixelXYZColor(x: number, y: number, z: number, rgb: number): void {
             this.setPixelRGB(this.getPixelOffset(x, y, z), rgb);
         }
@@ -151,8 +151,7 @@ namespace cubert {
          * @param z distance of the LED from the front edge
          */
         //% weight=80
-        //% blockId=cubert_get_pixel_offset block="%strip| get pixel offset at %x|%y|%z"
-        //% advanced=true
+        //% blockId=cubert_get_pixel_offset block="%strip| get pixel offset at x %x|y %y|z %z"
         getPixelOffset(x: number, y: number, z: number): number {
             if (z % 2 === 1) {
                 x = 7-x;
@@ -372,7 +371,7 @@ namespace cubert {
      * @param l luminosity from 0 to 99
      */
     //% blockId=cubertHSL block="hue %h|saturation %s|luminosity %l"
-    //% weight=5
+    //% weight=5 advanced=true
     export function hsl(h: number, s: number, l: number): number {
         h = h % 360;
         s = Math.clamp(0, 99, s);
