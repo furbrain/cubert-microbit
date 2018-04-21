@@ -44,7 +44,7 @@ namespace cubert {
          * Shows all LEDs to a given color (range 0-255 for r, g, b). 
          * @param rgb RGB color of the LED
          */
-        //% blockId="cubert_set_strip_color" block="%strip|show color %rgb=cubert_colors" 
+        //% blockId="cubert_set_whole_color" block="%strip|show color %rgb=cubert_colors" 
         //% weight=85 blockGap=8
         //% parts="cubert"
         showColor(rgb: number) {
@@ -231,32 +231,6 @@ namespace cubert {
         }
 
         /**
-         * Shift LEDs forward and clear with zeros.
-         * You need to call ``show`` to make the changes visible.
-         * @param offset number of pixels to shift forward, eg: 1
-         */
-        //% blockId="cubert_shift" block="%strip|shift pixels by %offset" blockGap=8
-        //% weight=40
-        //% parts="cubert"
-        shift(offset: number = 1): void {
-            const stride = 3;
-            this.buf.shift(-offset * stride, this.start * stride, this._length * stride)
-        }
-
-        /**
-         * Rotate LEDs forward.
-         * You need to call ``show`` to make the changes visible.
-         * @param offset number of pixels to rotate forward, eg: 1
-         */
-        //% blockId="cubert_rotate" block="%strip|rotate pixels by %offset" blockGap=8
-        //% weight=39
-        //% parts="cubert"
-        rotate(offset: number = 1): void {
-            const stride = 3;
-            this.buf.rotate(-offset * stride, this.start * stride, this._length * stride)
-        }
-
-        /**
          * Set the pin where the cubert is connected, defaults to P0.
          */
         //% weight=10
@@ -270,7 +244,7 @@ namespace cubert {
         /**
          * Estimates the electrical current (mA) consumed by the current light configuration.
          */
-        //% weight=9 blockId=cubert_power block="%strip|power (mA)"
+        //% weight=9 blockId=cubert_power block="%cubert|power (mA)"
         //% advanced=true
         power(): number {
             const stride = 3;

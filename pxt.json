@@ -8,5 +8,6 @@
     "files": [
         "main.ts",
         "README.md"
-    ]
+    ],
+    "version": "0.1.1"
 }
