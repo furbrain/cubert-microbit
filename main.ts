@@ -138,10 +138,8 @@ namespace cubert {
          * @param rgb RGB color of the LED
          */
         //% blockId="cubert_set_pixel_xyz_color" block="%strip|set pixel color at %x|, %y|, %z|, to %rgb=cubert_colors" 
-        //% blockGap=8
-        //% weight=80
         //% parts="cubert" advanced=true
-        setPixelXYZColor(x: number, y:number, z:number, rgb: number): void {
+        setPixelXYZColor(x: number, y: number, z: number, rgb: number): void {
             this.setPixelRGB(this.getPixelOffset(x, y, z), rgb);
         }
       
