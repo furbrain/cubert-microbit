@@ -137,7 +137,7 @@ namespace cubert {
          * @param z distance of the LED from the front edge
          * @param rgb RGB color of the LED
          */
-        //% blockId="cubert_set_pixel_xyz_color" block="%strip|set pixel color at %x|, %y|, %z|, to %rgb=cubert_colors" 
+        //% blockId="cubert_set_pixel_xyz_color" block="%strip|set pixel color at %x|%y|%z| to %rgb=cubert_colors" 
         //% parts="cubert" advanced=true
         setPixelXYZColor(x: number, y: number, z: number, rgb: number): void {
             this.setPixelRGB(this.getPixelOffset(x, y, z), rgb);
@@ -149,7 +149,7 @@ namespace cubert {
          * @param y distance of the LED from the bottom edge
          * @param z distance of the LED from the front edge
          */
-        //% weight=9 blockId=cubert_get_pixel_offset block="%strip| get pixel offset at %x|, %y|, %z"
+        //% weight=9 blockId=cubert_get_pixel_offset block="%strip| get pixel offset at %x|%y|%z"
         //% advanced=true
         getPixelOffset(x: number, y: number, z: number): number {
             if (z % 2 === 1) {
