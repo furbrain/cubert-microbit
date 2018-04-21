@@ -9,5 +9,6 @@
         "main.ts",
         "README.md"
     ],
-    "version": "0.1.3"
+    "version": "0.1.3",
+    "icon": "icon.png"
 }
