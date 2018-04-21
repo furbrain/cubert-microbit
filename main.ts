@@ -156,7 +156,7 @@ namespace cubert {
                 x = 7-x;
                 }
             if (x % 2 === 1) {
-                y = 7-x;
+                y = 7-y;
                 }
             return z*64+x*8+y;
         }
