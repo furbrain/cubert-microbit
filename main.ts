@@ -45,8 +45,8 @@ namespace cubert {
          * @param rgb RGB color of the LED
          */
         //% blockId="cubert_set_whole_color" block="%strip|show color %rgb=cubert_colors" 
-        //% weight=85 blockGap=8
-        //% parts="cubert"
+        //% weight=95 blockGap=8
+        //% parts="neopixel"
         showColor(rgb: number) {
             this.setAllRGB(rgb);
             this.show();
@@ -58,8 +58,8 @@ namespace cubert {
          * @param endHue the end hue value for the rainbow, eg: 360
          */
         //% blockId="cubert_set_strip_rainbow" block="%strip|show rainbow from %startHue|to %endHue" 
-        //% weight=85 blockGap=8
-        //% parts="cubert"
+        //% weight=50 blockGap=8
+        //% parts="neopixel"
         showRainbow(startHue: number = 1, endHue: number = 360) {
             if (this._length <= 0) return;
 
@@ -123,8 +123,8 @@ namespace cubert {
          */
         //% blockId="cubert_set_pixel_color" block="%strip|set pixel color at %pixeloffset|to %rgb=cubert_colors" 
         //% blockGap=8
-        //% weight=80
-        //% parts="cubert" advanced=true
+        //% weight=50
+        //% parts="neopixel" advanced=true
         setPixelColor(pixeloffset: number, rgb: number): void {
             this.setPixelRGB(pixeloffset, rgb);
         }
@@ -138,7 +138,8 @@ namespace cubert {
          * @param rgb RGB color of the LED
          */
         //% blockId="cubert_set_pixel_xyz_color" block="%strip|set pixel color at %x|%y|%z| to %rgb=cubert_colors" 
-        //% parts="cubert" advanced=true
+        //% weight=85
+        //% parts="neopixel" advanced=true
         setPixelXYZColor(x: number, y: number, z: number, rgb: number): void {
             this.setPixelRGB(this.getPixelOffset(x, y, z), rgb);
         }
@@ -149,7 +150,8 @@ namespace cubert {
          * @param y distance of the LED from the bottom edge
          * @param z distance of the LED from the front edge
          */
-        //% weight=9 blockId=cubert_get_pixel_offset block="%strip| get pixel offset at %x|%y|%z"
+        //% weight=80
+        //% blockId=cubert_get_pixel_offset block="%strip| get pixel offset at %x|%y|%z"
         //% advanced=true
         getPixelOffset(x: number, y: number, z: number): number {
             if (z % 2 === 1) {
@@ -167,7 +169,7 @@ namespace cubert {
          */
         //% blockId="cubert_show" block="%strip|show" blockGap=8
         //% weight=79
-        //% parts="cubert"
+        //% parts="neopixel"
         show() {
             ws2812b.sendBuffer(this.buf, this.pin);
         }
@@ -178,7 +180,7 @@ namespace cubert {
          */
         //% blockId="cubert_clear" block="%strip|clear"
         //% weight=76
-        //% parts="cubert"
+        //% parts="neopixel"
         clear(): void {
             const stride = 3;
             this.buf.fill(0, this.start * stride, this._length * stride);
@@ -199,7 +201,7 @@ namespace cubert {
          */
         //% blockId="cubert_set_brightness" block="%strip|set brightness %brightness" blockGap=8
         //% weight=59
-        //% parts="cubert" advanced=true
+        //% parts="neopixel" advanced=true
         setBrightness(brightness: number): void {
             this.brightness = brightness & 0xff;
         }
@@ -209,7 +211,7 @@ namespace cubert {
          **/
         //% blockId="cubert_each_brightness" block="%strip|ease brightness" blockGap=8
         //% weight=58
-        //% parts="cubert" advanced=true
+        //% parts="neopixel" advanced=true
         easeBrightness(): void {
             const stride = 3;
             const br = this.brightness;
@@ -234,7 +236,7 @@ namespace cubert {
          * Set the pin where the cubert is connected, defaults to P0.
          */
         //% weight=10
-        //% parts="cubert" advanced=true
+        //% parts="neopixel" advanced=true
         setPin(pin: DigitalPin): void {
             this.pin = pin;
             pins.digitalWritePin(this.pin, 0);
@@ -311,7 +313,7 @@ namespace cubert {
      */
     //% blockId="cubert_create" block="Cubert at pin %pin"
     //% weight=90 blockGap=8
-    //% parts="cubert"
+    //% parts="neopixel"
     //% trackArgs=0,2
     export function create(pin: DigitalPin): Cubert {
         let cubert = new Cubert();
@@ -370,6 +372,7 @@ namespace cubert {
      * @param l luminosity from 0 to 99
      */
     //% blockId=cubertHSL block="hue %h|saturation %s|luminosity %l"
+    //% weight=5
     export function hsl(h: number, s: number, l: number): number {
         h = h % 360;
         s = Math.clamp(0, 99, s);
